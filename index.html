@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Frontier Lab Interview Coaching — Kyle Cheng</title>
+<meta name="description" content="1:1 coaching for Anthropic and frontier-lab interview loops. I've conducted ~100 interviews at Anthropic and coached 25+ engineers through the process.">
+<meta property="og:title" content="Increase your odds of getting into Anthropic">
+<meta property="og:description" content="1:1 interview coaching for engineers, from someone who sat on the other side of ~100 Anthropic interviews. $550/session.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%237a2e2e'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='34' font-weight='600' fill='%23faf8f3' text-anchor='middle'%3EKC%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#faf8f3;
+    --paper-deep:#f3efe6;
+    --ink:#1c1a15;
+    --ink-soft:#4f4a3f;
+    --ink-faint:#8a8375;
+    --line:#dcd6c8;
+    --accent:#7a2e2e;
+    --accent-deep:#5e2222;
+    --max:1060px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"IBM Plex Sans",sans-serif;
+    font-size:17px;line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+    background-image:radial-gradient(rgba(28,26,21,.045) 1px,transparent 1px);
+    background-size:26px 26px;
+  }
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 28px;position:relative;z-index:1}
+  .eyebrow{
+    font-family:"IBM Plex Mono",monospace;font-size:12.5px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--accent);font-weight:500;
+  }
+
+  header{border-bottom:1px solid var(--line)}
+  .head-in{display:flex;justify-content:space-between;align-items:baseline;padding:22px 0}
+  .head-name{font-family:"Newsreader",serif;font-size:20px;font-weight:600}
+  .head-note{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-faint)}
+  @media(max-width:640px){.head-note{display:none}}
+
+  .hero{padding:84px 0 72px;border-bottom:1px solid var(--line)}
+  .hero h1{
+    font-family:"Newsreader",serif;font-weight:500;
+    font-size:clamp(38px,5.6vw,62px);line-height:1.08;letter-spacing:-.015em;
+    max-width:16ch;margin:18px 0 26px;
+  }
+  .hero h1 em{font-style:italic;color:var(--accent)}
+  .hero p.lede{max-width:54ch;font-size:19px;color:var(--ink-soft);margin-bottom:36px}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .btn{
+    display:inline-block;text-decoration:none;font-weight:600;font-size:16px;
+    padding:14px 26px;border-radius:2px;transition:transform .15s ease,background .15s ease;
+  }
+  .btn-primary{background:var(--accent);color:var(--paper)}
+  .btn-primary:hover{background:var(--accent-deep);transform:translateY(-1px)}
+  .btn-ghost{border:1px solid var(--ink);color:var(--ink)}
+  .btn-ghost:hover{background:var(--ink);color:var(--paper)}
+  .cta-price{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--ink-faint)}
+
+  .cred-strip{display:flex;gap:0;flex-wrap:wrap;border-top:1px solid var(--line);margin-top:64px}
+  .cred{flex:1 1 200px;padding:22px 26px 6px 0;border-right:1px solid var(--line);margin-right:26px}
+  .cred:last-child{border-right:none;margin-right:0}
+  .cred b{font-family:"Newsreader",serif;font-size:34px;font-weight:600;display:block;line-height:1.1}
+  .cred span{font-size:13.5px;color:var(--ink-faint)}
+  @media(max-width:700px){.cred{border-right:none;padding-right:0}}
+
+  section{padding:72px 0;border-bottom:1px solid var(--line)}
+  h2{
+    font-family:"Newsreader",serif;font-weight:500;font-size:clamp(28px,3.4vw,38px);
+    letter-spacing:-.01em;margin:14px 0 34px;line-height:1.15;
+  }
+
+  .loop{border:1px solid var(--ink);background:var(--paper-deep);padding:34px 34px 28px;position:relative}
+  .loop-cap{position:absolute;top:-11px;left:24px;background:var(--paper-deep);padding:0 10px;
+    font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint)}
+  .stage{display:flex;gap:18px;padding:16px 0;border-bottom:1px dashed var(--line);align-items:baseline}
+  .stage:last-child{border-bottom:none}
+  .stage-n{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--accent);min-width:34px;font-weight:500}
+  .stage-body b{font-family:"Newsreader",serif;font-size:19px;font-weight:600;display:block}
+  .stage-body span{font-size:14.5px;color:var(--ink-soft)}
+  .rounds{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+  .round{font-family:"IBM Plex Mono",monospace;font-size:12px;border:1px solid var(--line);
+    background:var(--paper);padding:4px 10px;border-radius:2px;color:var(--ink-soft)}
+  .loop-note{margin-top:20px;font-size:14px;color:var(--ink-faint);font-style:italic;font-family:"Newsreader",serif}
+
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+  @media(max-width:820px){.steps{grid-template-columns:1fr}}
+  .step{border-top:2px solid var(--ink);padding-top:18px}
+  .step .n{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--accent);letter-spacing:.1em}
+  .step h3{font-family:"Newsreader",serif;font-size:22px;font-weight:600;margin:8px 0 10px}
+  .step p{font-size:15.5px;color:var(--ink-soft)}
+
+  .bounds{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+  @media(max-width:820px){.bounds{grid-template-columns:1fr}}
+  .bound{padding:28px;border:1px solid var(--line)}
+  .bound.yes{background:var(--paper-deep)}
+  .bound h3{font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:16px}
+  .bound.yes h3{color:var(--accent)}
+  .bound.no h3{color:var(--ink-faint)}
+  .bound ul{list-style:none}
+  .bound li{padding:7px 0 7px 26px;position:relative;font-size:15.5px;color:var(--ink-soft)}
+  .bound li::before{position:absolute;left:0;font-family:"IBM Plex Mono",monospace}
+  .bound.yes li::before{content:"+";color:var(--accent)}
+  .bound.no li::before{content:"–";color:var(--ink-faint)}
+
+  .faq details{border-bottom:1px solid var(--line)}
+  .faq summary{
+    cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:20px;
+    padding:22px 0;font-family:"Newsreader",serif;font-size:21px;font-weight:500;
+  }
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"+";font-family:"IBM Plex Mono",monospace;color:var(--accent);font-size:20px;flex-shrink:0}
+  .faq details[open] summary::after{content:"–"}
+  .faq .a{padding:0 0 24px;max-width:62ch;color:var(--ink-soft);font-size:16px}
+
+  .price-card{
+    border:1px solid var(--ink);background:var(--ink);color:var(--paper);
+    padding:44px;display:grid;grid-template-columns:1.2fr 1fr;gap:44px;align-items:start;
+  }
+  @media(max-width:820px){.price-card{grid-template-columns:1fr}}
+  .price-card h3{font-family:"Newsreader",serif;font-size:30px;font-weight:500;margin-bottom:14px}
+  .price-card p{color:#cfc9bb;font-size:15.5px;max-width:44ch}
+  .price-roi{margin-top:22px;font-family:"Newsreader",serif;font-style:italic;font-size:17px;color:var(--paper)}
+  .tier{display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px dashed rgba(250,248,243,.25)}
+  .tier:first-child{padding-top:0}
+  .tier-name{font-size:15px;color:#cfc9bb}
+  .tier-price{font-family:"Newsreader",serif;font-size:26px;font-weight:500}
+  .tier-price small{font-family:"IBM Plex Mono",monospace;font-size:12px;color:#cfc9bb;margin-left:8px}
+  .price-side .btn{margin-top:26px;background:var(--paper);color:var(--ink);width:100%;text-align:center}
+  .price-side .btn:hover{background:#fff}
+  .price-free{margin-top:14px;font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:#cfc9bb;text-align:center}
+
+  footer{padding:52px 0 64px}
+  .foot-grid{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}
+  footer p{font-size:13.5px;color:var(--ink-faint);max-width:62ch}
+  footer a{color:var(--ink-soft)}
+
+  .rise{opacity:0;transform:translateY(14px);animation:rise .7s ease forwards}
+  @keyframes rise{to{opacity:1;transform:none}}
+  .d1{animation-delay:.05s}.d2{animation-delay:.15s}.d3{animation-delay:.25s}.d4{animation-delay:.35s}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap head-in">
+    <div class="head-name">Kyle Cheng</div>
+    <div class="head-note">independent coaching practice · remote</div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="hero">
+    <div class="eyebrow rise d1">1:1 interview coaching for engineers · Anthropic + frontier labs</div>
+    <h1 class="rise d2">Increase your odds of getting <em>into Anthropic.</em></h1>
+    <p class="lede rise d3">Offers run $400k to $1M+ a year, so everyone strong applies, and the loop is built to filter them out. Standing out is the whole game. I sat on the other side of it, around 100 interviews at Anthropic. Now I coach engineers through it.</p>
+    <div class="cta-row rise d4">
+      <a class="btn btn-primary" href="https://calendly.com/kylcheng/coaching">Book a session</a>
+      <a class="btn btn-ghost" href="https://calendly.com/kylcheng/coaching-intro-call">Free 15-min intro call</a>
+    </div>
+
+    <div class="cred-strip">
+      <div class="cred"><b>~100</b><span>interviews conducted at Anthropic</span></div>
+      <div class="cred"><b>25+</b><span>engineers coached through real loops</span></div>
+      <div class="cred"><b>$400k+</b><span>where offers start, per levels.fyi</span></div>
+    </div>
+  </div>
+
+  <section>
+    <div class="eyebrow">The problem</div>
+    <h2>What you're up against</h2>
+    <div class="loop">
+      <div class="loop-cap">fig. 1 — typical Anthropic-style process</div>
+      <div class="stage">
+        <div class="stage-n">00</div>
+        <div class="stage-body">
+          <b>Getting the interview</b>
+          <span>The filter most candidates never clear. Standing out here is positioning and resume work, not luck. I coach this stage too.</span>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="stage-n">01</div>
+        <div class="stage-body">
+          <b>Recruiter screen</b>
+          <span>Sounds easy. People still fail it. Your "why Anthropic" answer has to survive two or three follow-up questions.</span>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="stage-n">02</div>
+        <div class="stage-body">
+          <b>Technical screen</b>
+          <span>Practical coding under time pressure. System design and AI-assisted formats are showing up more.</span>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="stage-n">03</div>
+        <div class="stage-body">
+          <b>Onsite</b>
+          <span>Up to six rounds, each measuring something different. Most candidates prepare for half of them.</span>
+          <div class="rounds">
+            <span class="round">coding</span>
+            <span class="round">system design</span>
+            <span class="round">culture &amp; values</span>
+            <span class="round">goals &amp; experience</span>
+            <span class="round">hiring manager</span>
+            <span class="round">project deep-dive</span>
+          </div>
+        </div>
+      </div>
+      <p class="loop-note">The shape of the loop is public. What gets evaluated inside each room isn't.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">The work</div>
+    <h2>How sessions run</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="n">SESSION 1</div>
+        <h3>Strategy and calibration</h3>
+        <p>Where you are, where the bar is, what to do about the gap. You leave with a round-by-round plan. Sometimes we find rounds you don't need to prep at all.</p>
+      </div>
+      <div class="step">
+        <div class="n">BEFORE EACH ROUND</div>
+        <h3>Targeted mocks</h3>
+        <p>Practical coding, system design, AI-assisted formats, or culture. A realistic mock, then a straight answer: would this pass. If not, what changes the outcome.</p>
+      </div>
+      <div class="step">
+        <div class="n">AFTER EVERY SESSION</div>
+        <h3>Written plan and homework</h3>
+        <p>Every session ends in writing. What we saw, what to fix, which problems to drill. I review your work between sessions.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">The boundaries</div>
+    <h2>What you're paying for</h2>
+    <div class="bounds">
+      <div class="bound yes">
+        <h3>You get</h3>
+        <ul>
+          <li>Technical mocks: practical coding, system design, AI-assisted formats</li>
+          <li>An honest read of where you stand against the real bar</li>
+          <li>Judgment from sitting on the interviewer's side ~100 times</li>
+          <li>Round-by-round strategy for your loop and level</li>
+          <li>Story and positioning work for culture and values rounds</li>
+        </ul>
+      </div>
+      <div class="bound no">
+        <h3>You don't get</h3>
+        <ul>
+          <li>A referral. I'm not at Anthropic anymore. I coach you to earn one</li>
+          <li>Leaked questions or rubrics</li>
+          <li>Confidential anything, from any employer</li>
+          <li>Guarantees. Nobody honest sells those</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">Before you book</div>
+    <h2>Questions candidates ask</h2>
+    <div class="faq">
+      <details>
+        <summary>How many sessions will I need?</summary>
+        <div class="a">One covers strategy plus a first read on your level. A full loop usually lands at three to five. Most people start with a single session, then pick a pack once we've scoped what the loop needs.</div>
+      </details>
+      <details>
+        <summary>What's your track record?</summary>
+        <div class="a">25+ engineers coached through frontier-lab loops, senior ICs to engineering managers, most targeting Anthropic. Before that I conducted around 100 interviews at Anthropic and built AI tooling for its recruiting org.</div>
+      </details>
+      <details>
+        <summary>Have you coached people for my role?</summary>
+        <div class="a">If you're an engineer, probably. The roster has covered coding-heavy IC roles, forward-deployed and pre-sales engineering, infra, and engineering-manager loops. Two honest gaps: I don't run deep ML research-scientist rounds, and I don't coach non-engineering roles (recruiting, finance, ops). Send me the job description and you'll get a straight answer either way.</div>
+      </details>
+      <details>
+        <summary>What should I do before session one?</summary>
+        <div class="a">Read the job description closely and think about why each line is in there. Draft your "why Anthropic" answer two layers deep. Know where you think your weak spots are. I'll find the real ones.</div>
+      </details>
+      <details>
+        <summary>Are you affiliated with Anthropic?</summary>
+        <div class="a">No. This is an independent practice. My experience informs my judgment. It doesn't come with inside information, and I wouldn't sell that anyway.</div>
+      </details>
+    </div>
+  </section>
+
+  <section style="border-bottom:none">
+    <div class="eyebrow">Pricing</div>
+    <h2>Start with one session.</h2>
+    <div class="price-card">
+      <div>
+        <h3>Sessions and packs</h3>
+        <p>Every session is 60 minutes and ends with a written plan and homework. Packs bring the rate down once we've scoped your loop.</p>
+        <p class="price-roi">The job pays $400k+. If coaching moves your odds at all, it's the cheapest part of the process.</p>
+      </div>
+      <div class="price-side">
+        <div class="tier"><span class="tier-name">1 session</span><span class="tier-price">$550</span></div>
+        <div class="tier"><span class="tier-name">3 sessions</span><span class="tier-price">$1,500<small>$500 ea</small></span></div>
+        <div class="tier"><span class="tier-name">5 sessions</span><span class="tier-price">$2,250<small>$450 ea</small></span></div>
+        <a class="btn" href="https://calendly.com/kylcheng/coaching">Book a session</a>
+        <div class="price-free"><a href="https://calendly.com/kylcheng/coaching-intro-call" style="color:inherit">15-minute intro call is free</a></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <p>Kyle Cheng · <a href="mailto:kylcheng@gmail.com">kylcheng@gmail.com</a> · <a href="https://www.linkedin.com/in/kylecheng/">LinkedIn</a></p>
+    <p>Independent practice. Not affiliated with, sponsored by, or endorsed by Anthropic or any other company.</p>
+  </div>
+</footer>
+
+</body>
+</html>
